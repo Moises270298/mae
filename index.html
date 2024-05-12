@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homenagem às Mães</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            background-image: url("https://imgs.search.brave.com/4t8Ve-I3cToBE9sYs_0Pdu6Wrl2uYUB7umZR6zTYbqw/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtZ3JhdGlz/L2Z1bmRvLWRlLWZp/Y2Nhby1jaWVudGlm/aWNhLWZ1dHVyaXN0/YS1tb2Rlcm5vXzM1/OTEzLTIxNTIuanBn/P3NpemU9NjI2JmV4/dD1qcGc");
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .card {
+            background-color: #fff;
+            border-radius: 20px;
+            border: 2px solid #ccc;
+            /* Adicionando borda */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            max-width: 400px;
+            transform: perspective(1000px) rotateY(1deg);
+            transition: transform 0.5s;
+            position: relative;
+            /* Adicionando para usar posicionamento absoluto */
+        }
+        
+        .card::before,
+        .card::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: calc(100% + 10px);
+            height: calc(100% + 10px);
+            border-radius: 20px;
+            border: 2px solid #ccc;
+            z-index: -1;
+            /* Colocando atrás do conteúdo */
+        }
+        
+        .card::before {
+            transform: rotate(-2deg);
+        }
+        
+        .card::after {
+            transform: rotate(2deg);
+        }
+        
+        h1 {
+            color: #0507aa;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Lucida Handwriting', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+            /* Alterando a fonte */
+        }
+        
+        p {
+            color: #ceba05fa;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-top: 20px;
+            font-family: 'Lucida Handwriting', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+            /* Alterando a fonte */
+            overflow: hidden;
+            /* Esconder overflow para simular efeito de digitação */
+            white-space: pre-wrap;
+            /* Permitir quebras de linha */
+            position: relative;
+            /* Adicionando para usar posicionamento absoluto */
+        }
+        
+        img {
+            width: 120px;
+            border-radius: 50%;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        /* Classe para abrir a carta */
+        
+        .open .message {
+            display: inline-block;
+            /* Exibido quando a classe 'open' está presente */
+        }
+        /* Cursor piscante */
+        
+        .cursor {
+            display: inline-block;
+            width: 5px;
+            height: 20px;
+            background-color: black;
+            animation: blink 0.8s infinite;
+        }
+        
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card" id="card">
+        <h1>Feliz Dia das Mães!</h1>
+        <p class="message"></p>
+        <img src="https://imgs.search.brave.com/fQGp84uQmtrpvQSFvZh1z9yDxLq7VQp1SronfNJ50Y4/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9jZG4u/ZGljaW9uYXJpb3Bv/cHVsYXIuY29tL2lt/YWdlbnMvY29yYWNh/by12ZXJtZWxoby1z/aWduaWZpY2Fkby1l/bW9qaS1jb21vLXVz/YXItNTRzLmpwZw" alt="Coração"
+            id="heartIcon">
+    </div>
+
+    <script>
+        document.getElementById("heartIcon").addEventListener("click", function() {
+            var card = document.getElementById("card");
+            card.classList.toggle("open");
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var message = document.querySelector(".message");
+            var text = "Para a pessoa que sempre nos ama incondicionalmente, nos apoia em todos os momentos e ilumina nossas vidas com amor. Obrigado por amar o moxeis, a pisxila, o tito, o xunio, a grazi, a jana, o fhe, a ana e o lucax";
+            var words = text.split(" ");
+            var index = 0;
+            var typingEffect = setInterval(function() {
+                if (index < words.length) {
+                    message.innerHTML += words[index] + " ";
+                    index++;
+                } else {
+                    clearInterval(typingEffect);
+                    // Adicionar cursor piscante
+                    message.insertAdjacentHTML("beforeend", "<span class='cursor'></span>");
+                }
+            }, 700);
+        });
+    </script>
+</body>
+
+</html>
